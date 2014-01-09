@@ -1,6 +1,8 @@
 package modelos;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Objects;
 import modelos.enumeraciones.GradoAcademico;
 
 /**
@@ -55,6 +57,36 @@ public class Alumno extends Persona {
     public String toString() {
         return String.format("%s %s", this.matricula, super.toString());
     }
+    
+    public static Integer getMatricula(HashMap<Integer, Alumno> alumnos){
+        return alumnos.size() + 1;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Alumno other = (Alumno) obj;
+        if (!Objects.equals(this.matricula, other.matricula)) {
+            return false;
+        }
+        if (this.grado != other.grado) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
     
 
